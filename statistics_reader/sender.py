@@ -17,8 +17,8 @@ class Sender:
         while True:
             sleep(period)
             try:
-                LOGGER.info(data)
                 data = self.reader.read_json_data()
+                LOGGER.info(data)
                 web_socket = create_connection(server_address, 10)
                 web_socket.send()
                 LOGGER.info("Sent data ")
