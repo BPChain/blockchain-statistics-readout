@@ -17,3 +17,5 @@ class BlockchainAdapter:
     def new_blocks_and_previous(self) -> Tuple[List[Block], Block]:
         raise NotImplementedError()
 
+
+
