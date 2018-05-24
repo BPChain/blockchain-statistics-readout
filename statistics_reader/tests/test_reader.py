@@ -1,7 +1,7 @@
 import json
 
 from statistics_reader.block import Block
-from statistics_reader.blockchainreader import BlockchainReader
+from statistics_reader.blockchain_reader import BlockchainReader
 from .mock_adapter import MockAdapter
 
 
