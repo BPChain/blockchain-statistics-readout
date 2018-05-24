@@ -17,9 +17,9 @@ class Sender:
         while True:
             sleep(period)
             try:
-                web_socket = create_connection(server_address, 10)
-                data = self.reader.read_json_data()
                 LOGGER.info(data)
+                data = self.reader.read_json_data()
+                web_socket = create_connection(server_address, 10)
                 web_socket.send()
                 LOGGER.info("Sent data ")
                 result = web_socket.recv()
