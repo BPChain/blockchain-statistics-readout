@@ -1,8 +1,8 @@
 from typing import List
 from itertools import chain
 
-from ..statistics_reader.block import Block
-from ..statistics_reader.blockchain_adapter import BlockchainAdapter
+from statistics_reader.block import Block
+from statistics_reader.blockchain_adapter import BlockchainAdapter
 
 
 class MockAdapter(BlockchainAdapter):

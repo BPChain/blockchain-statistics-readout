@@ -3,7 +3,7 @@ from time import sleep
 from websocket import create_connection
 
 from .blockchainreader import BlockchainReader
-from ..logger import logger_for
+from .logger import logger_for
 
 LOGGER = logger_for(__name__)
 

@@ -1,3 +1,4 @@
+
 from statistics_reader.sender import Sender
 from statistics_reader.block import Block
 from statistics_reader.blockchain_adapter import BlockchainAdapter
