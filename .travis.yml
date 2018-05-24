@@ -1,0 +1,17 @@
+language: python
+python:
+  - "3.6"
+sudo: enabled
+notifications:
+  email: false
+# command to install dependencies
+install:
+  - pip install pytest
+  - pip install coveralls
+# command to test
+script:
+  - python3 -m pytest
+  - coverage run -m pytest
+  - coverage report -m --include="statistics_reader/*" --omit="statistics_reader/tests/*"
+after_success:
+  - coveralls
