@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='blockchain_statistics_readout',
-      version='0.1',
+      version='0.3',
       description='Read out statistics from a blockchain',
       author='Anton von Weltzien',
       license='MIT',
