@@ -6,7 +6,7 @@ notifications:
   email: false
 # command to install dependencies
 install:
-  - pip -r dev_requirements.txt
+  - pip install -r dev_requirements.txt
 # command to test
 script:
   - python3 -m pytest
