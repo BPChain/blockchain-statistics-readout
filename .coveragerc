@@ -1,0 +1,7 @@
+[report]
+omit =
+    */python?.?/*
+    *__init__*
+    statistics_reader/tests
+    venv
+    setup.py
