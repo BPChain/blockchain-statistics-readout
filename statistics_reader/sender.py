@@ -20,7 +20,7 @@ class Sender:
                 data = self.reader.read_json_data()
                 LOGGER.info(data)
                 web_socket = create_connection(server_address, 10)
-                web_socket.send()
+                web_socket.send(data)
                 LOGGER.info("Sent data ")
                 result = web_socket.recv()
                 LOGGER.info("Received '%s'", result)
