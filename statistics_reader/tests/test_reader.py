@@ -6,7 +6,7 @@ from .mock_adapter import MockAdapter
 
 
 def setup_with(blocks):
-    adapter = MockAdapter(hashrates=[3]*20, is_minings=[1]*20, new_blocks=blocks)
+    adapter = MockAdapter(hashrates=[3] * 20, is_minings=[1] * 20, new_blocks=blocks)
     return adapter, BlockchainReader('some_name', 'some_chain', adapter)
 
 
@@ -35,6 +35,35 @@ def test_avg_time_1():
     adapter.next_epoch()
     reader._store_averages()
     assert (33 - 5) / 3 == reader.data.time
+
+
+def test_avg_time_with_genesis():
+    blocks = [[Block(3, ['a', 'a', 'a'], 0, 3),
+               Block(3, ['a', 'a', 'a'], 5, 3)],
+              [Block(3, ['a', 'a', 'a'], 10, 3), Block(3, ['a', 'a', 'a'], 20, 3),
+               Block(3, ['a', 'a', 'a'], 33, 3)],
+              []]
+    adapter, reader = setup_with(blocks)
+    reader._store_averages()
+    assert 0 == reader.data.time
+    adapter.next_epoch()
+    reader._store_averages()
+    assert (33 - 5) / 3 == reader.data.time
+    adapter.next_epoch()
+    reader._store_averages()
+
+
+def test_avg_time_with_genesis_long_wait():
+    blocks = [[], [Block(3, ['a', 'a', 'a'], 0, 3)], [], [], [Block(3, ['a', 'a', 'a'], 5, 3)],
+              [Block(3, ['a', 'a', 'a'], 10, 3), Block(3, ['a', 'a', 'a'], 20, 3),
+               Block(3, ['a', 'a', 'a'], 33, 3)],
+              []]
+    adapter, reader = setup_with(blocks)
+    wanted_results = [0, 0, 0, 0, 0, (33-5)/3, (33-5)/3]
+    for result in wanted_results:
+        reader._store_averages()
+        assert result == reader.data.time
+        adapter.next_epoch()
 
 
 def test_avg_time_multiple_empty_epochs():

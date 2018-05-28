@@ -29,6 +29,10 @@ class BlockchainReader:
             self.data.block_size = mean(block.size for block in new_blocks)
             self.data.transactions = mean(len(block.transactions) for block in new_blocks)
         if old_block and new_blocks:
+            if old_block.timestamp == 0:
+                # The first block might have a timestamp 0 if it is the genesis block.
+                # This would lead to a huge average
+                old_block = new_blocks[0]
             self.data.time = (new_blocks[-1].timestamp - old_block.timestamp) / len(new_blocks)
 
     def read_json_data(self):
