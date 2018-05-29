@@ -1,6 +1,6 @@
 from time import sleep
 
-from websocket import create_connection
+import requests as http_client
 
 from .blockchain_reader import BlockchainReader
 from .logger import logger_for
@@ -17,13 +17,9 @@ class Sender:
         while True:
             sleep(period)
             try:
-                data = self.reader.read_json_data()
-                LOGGER.info(data)
-                web_socket = create_connection(server_address, 10)
-                web_socket.send(data)
-                LOGGER.info("Sent data ")
-                result = web_socket.recv()
-                LOGGER.info("Received '%s'", result)
-                web_socket.close()
+                json_data = self.reader.read_json_data()
+                LOGGER.info(json_data)
+                response = http_client.post(server_address, data=json_data)
+                LOGGER.info('Sent data, received %s from server', response.status_code)
             except Exception as exception:
                 LOGGER.warning("Exception occurred during sending: '%s'", exception)
