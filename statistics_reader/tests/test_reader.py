@@ -147,10 +147,12 @@ def test_json():
               [], [], [],
               [Block(1, [], 66, 4)], []]
     adapter, reader = setup_with(blocks)
-    data = reader.read_json_data()
-    assert type(data) == str
-    assert type(json.loads(data)) == dict
+    data = reader.read_dict_data()
+    assert type(data) == dict
+    assert type(json.dumps(data)) == str
+    assert type(data['hashrate']) == int
     adapter.next_epoch()
-    data = reader.read_json_data()
-    assert type(data) == str
-    assert type(json.loads(data)) == dict
+    data = reader.read_dict_data()
+    assert type(data) == dict
+    assert type(json.dumps(data)) == str
+    assert type(data['chainName']) == str
