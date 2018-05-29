@@ -8,6 +8,13 @@ from .blockchain_data import BlockchainData
 
 class BlockchainReader:
     def __init__(self, process_name: str, chain_name: str, adapter: BlockchainAdapter):
+        """
+        I read data from a Blockchain
+        :param process_name: name of the blockchain process
+        :param chain_name: name of the blockchain
+        :param adapter: Adapter to read data from the blockchain. Should be an implementation of
+        BlockchainAdapter
+        """
         self.process_name = process_name
         self.adapter = adapter
         self.data = BlockchainData(chain_name, adapter.host_id())

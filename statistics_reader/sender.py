@@ -10,6 +10,11 @@ LOGGER = logger_for(__name__)
 
 class Sender:
     def __init__(self, server_address, period, reader: BlockchainReader):
+        """
+        :param server_address: the address of the server e.g. http://myserver.com/route
+        :param period: wait period between data sends in seconds
+        :param reader: a reader initialized with a blockchain adapter
+        """
         self.reader = reader
         self.send_data_every(period, server_address)
 
