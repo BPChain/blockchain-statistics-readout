@@ -5,4 +5,5 @@ CodeClimate: [![Maintainability](https://api.codeclimate.com/v1/badges/a9a3a37c3
 This is a Framework for reading statistics such as hashrate, average block time, etc from a 
 Blockchain.
 
-To use it on has to supply an Adapter object to the Sender class.
+To use it on has to supply an Adapter object, a chain name and the process name of the blockchian
+ process to the Reader class. Pass that class and the server Address to the Sender class.
