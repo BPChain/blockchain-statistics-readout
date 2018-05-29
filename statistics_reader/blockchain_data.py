@@ -16,7 +16,7 @@ class BlockchainData:
         self._data['hostId'] = host_id
         self._data['target'] = os.environ.get('TARGET_HOSTNAME', 'NO_HOST_SET')
 
-    def to_json(self):
+    def to_dict(self):
         self._data['avgDifficulty'] = self.difficulty
         self._data['blockSize'] = self.block_size
         self._data['avgTransactions'] = self.transactions
@@ -24,5 +24,4 @@ class BlockchainData:
         self._data['cpuUsage'] = self.cpu_usage
         self._data['hashrate'] = self.hashrate
         self._data['avgBlocktime'] = self.time
-
-        return json.dumps(self._data)
+        return self._data

@@ -17,9 +17,9 @@ class Sender:
         while True:
             sleep(period)
             try:
-                json_data = self.reader.read_json_data()
+                json_data = self.reader.read_dict_data()
                 LOGGER.info(json_data)
-                response = http_client.post(server_address, data=json_data)
+                response = http_client.post(server_address, json=json_data)
                 LOGGER.info('Sent data, received %s from server', response.status_code)
             except Exception as exception:
                 LOGGER.warning("Exception occurred during sending: '%s'", exception)

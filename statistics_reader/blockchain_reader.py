@@ -35,6 +35,6 @@ class BlockchainReader:
                 old_block = new_blocks[0]
             self.data.time = (new_blocks[-1].timestamp - old_block.timestamp) / len(new_blocks)
 
-    def read_json_data(self):
+    def read_dict_data(self):
         self._update_data()
-        return self.data.to_json()
+        return self.data.to_dict()
