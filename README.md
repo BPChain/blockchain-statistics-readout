@@ -4,7 +4,7 @@ CodeClimate: [![Maintainability](https://api.codeclimate.com/v1/badges/a9a3a37c3
 
 
 ### Statistics Reader
-This is a Framework for reading statistics such as hashrate, average block-time, etc from a 
+This is a framework for reading statistics such as hashrate, average block-time, etc from a 
 Blockchain. The framework is installed as a pip package. 
 
 #### Usage
@@ -13,7 +13,8 @@ To use it one has to supply an Adapter object, a chain name and the process name
  str, adapter: BlockchainAdapter, period=10)` Is the object needed to read and send data. For 
  more info read the documentation in [`sender`](statistics_reader/sender.py). This framework is 
  used by [private-multichain](https://github.com/BPChain/private-multichain), 
- [private-ethereum](https://github.com/BPChain/private-ethereum) and [private-ethereum](https://github.com/BPChain/private-xain). 
+ [private-ethereum](https://github.com/BPChain/private-ethereum) and 
+ [private-xain](https://github.com/BPChain/private-xain). 
  
 #### Install 
 `pip3 install git+git://github.com/BPChain/blockchain_statistics_readout.git` <br>
