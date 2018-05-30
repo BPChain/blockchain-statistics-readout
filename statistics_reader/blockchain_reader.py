@@ -4,6 +4,7 @@ import psutil as psutil
 
 from .blockchain_adapter import BlockchainAdapter
 from .blockchain_data import BlockchainData
+from .logger import logger_for
 
 
 class BlockchainReader:
@@ -18,6 +19,7 @@ class BlockchainReader:
         self.process_name = process_name
         self.adapter = adapter
         self.data = BlockchainData(chain_name, adapter.host_id())
+        self.logger = logger_for(__name__)
 
     def _cpu_usage(self):
         return sum([p.cpu_percent() for p in psutil.process_iter()
@@ -44,4 +46,9 @@ class BlockchainReader:
 
     def read_dict_data(self):
         self._update_data()
-        return self.data.to_dict()
+        data = self.data.to_dict()
+        for key, value in data.items():
+            if value == 0 or value == "" or value is None:
+                self.logger.error("%s was not allowed value %s", key, value)
+        return data
+

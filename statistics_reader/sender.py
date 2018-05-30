@@ -10,8 +10,9 @@ LOGGER = logger_for(__name__)
 
 class Sender:
     def __init__(self, server_address: str, process_name: str, chain_name: str,
-                 adapter: BlockchainAdapter, period=15):
+                 adapter: BlockchainAdapter, period=10):
         """
+        I continuously send blockchain statistics to a server
         :param server_address: Where to send the data such as "http://myserver.com/route"
         :param process_name: name of the blockchain process
         :param chain_name: Name of blockchain
