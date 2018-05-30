@@ -16,7 +16,7 @@ To use it one has to supply an Adapter object, a chain name and the process name
  [private-ethereum](https://github.com/BPChain/private-ethereum) and [private-ethereum](https://github.com/BPChain/private-xain). 
  
 #### Install 
-`pip3 install git+git://github.com/BPChain/blockchain_statistics_readout.git <br>
+`pip3 install git+git://github.com/BPChain/blockchain_statistics_readout.git` <br>
 You can append a @1.1 to download that specific tag from this repo.
 
 #### Architecture 
@@ -27,4 +27,4 @@ You can append a @1.1 to download that specific tag from this repo.
  
  #### Tests
  Tests for the reader are in the [`tests`](statistics_reader/tests) folder and test the 
- [`Reader`](statistics_reader/blockchain_reader.py). You can run them with `python3 -m pytest`
+ [`Reader`](statistics_reader/blockchain_reader.py). You can run them with `python3 -m pytest` 
