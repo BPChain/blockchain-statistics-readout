@@ -49,6 +49,6 @@ class BlockchainReader:
         data = self.data.to_dict()
         for key, value in data.items():
             if value == 0 or value == "" or value is None:
-                self.logger.warning("%s was not allowed value %s", key, value)
+                self.logger.warning("%s should not be value %s", key, value)
         return data
 
